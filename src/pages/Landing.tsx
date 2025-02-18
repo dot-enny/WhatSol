@@ -52,63 +52,55 @@ const whyChooseSol = [
   {
     title: 'Lightning-Fast Transactions',
     description: 'Send SOL instantly, no more waiting',
-    bgColor: '#0DC143',
-    bgImg: 'world-web.svg',
+    bgImg: 'lightning-fast-transactions.svg',
   },
   {
     title: 'Secure & Reliable',
     description: "Built on the robust Solana blockchain, your transactions are safe and secure",
-    bgColor: '#0DC143',
-    bgImg: 'squigly-line.svg',
+    bgImg: 'secure-and-reliable.svg',
   },
   {
     title: 'Easy to Use',
     description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
-    bgColor: '#008829',
-    bgImg: '3d-hexagon.svg',
+    bgImg: 'easy-to-use.svg',
   },
   {
     title: 'Low Fees',
     description: "Enjoy minimal transaction fees on the Solana network",
-    bgColor: '#008829',
-    bgImg: '3d-hexagon.svg',
+    bgImg: 'low-fees.svg',
   },
   {
     title: 'Global Access',
     description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
-    bgColor: '#008829',
-    bgImg: '3d-hexagon.svg',
+    bgImg: 'global-access.svg',
   },
+  
   {
     title: 'Lightning-Fast Transactions',
     description: 'Send SOL instantly, no more waiting',
-    bgColor: '#0DC143',
-    bgImg: 'world-web.svg',
+    bgImg: 'lightning-fast-transactions.svg',
   },
   {
     title: 'Secure & Reliable',
     description: "Built on the robust Solana blockchain, your transactions are safe and secure",
-    bgColor: '#0DC143',
-    bgImg: 'squigly-line.svg',
+    bgImg: 'secure-and-reliable.svg',
   },
   {
     title: 'Easy to Use',
     description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
-    bgColor: '#008829',
-    bgImg: '3d-hexagon.svg',
+    bgImg: 'easy-to-use.svg',
   },
   {
     title: 'Low Fees',
     description: "Enjoy minimal transaction fees on the Solana network",
-    bgColor: '#008829',
-    bgImg: '3d-hexagon.svg',
+    bgImg: 'low-fees.svg',
   },
   {
     title: 'Global Access',
     description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
-    bgColor: '#008829',
-    bgImg: '3d-hexagon.svg',
+    bgImg: 'global-access.svg',
   },
+  
 ]
 
 const Steps = () => {
@@ -150,11 +142,11 @@ const WhyChooseSol = () => {
   )
 }
 
-const WhyChooseSolItem = ({ title, description, bgColor, bgImg }: { title: string, description: string, bgColor: string, bgImg: string }) => {
+const WhyChooseSolItem = ({ title, description, bgImg }: { title: string, description: string, bgImg: string }) => {
   return (
     <div
       className="p-8 pt-44 rounded-lg min-w-[314px]"
-      style={{ background: `url('/assets/bg/${bgImg}') no-repeat`, backgroundColor: bgColor, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+      style={{ background: `url('/assets/bg/${bgImg}') no-repeat`, backgroundColor: '#008829', backgroundPosition: 'center', backgroundSize: 'cover' }}>
       <h3 className="text-lg font-bold">{title}</h3>
       <p className="text-sm">{description}</p>
     </div>
