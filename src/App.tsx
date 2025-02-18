@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 
 import "./App.css";
+import { SignUp } from './pages/SignUp';
 function App() {
   return (
     <Router>
@@ -11,7 +12,14 @@ function App() {
           element={
             <div>
               <Landing />
-              
+            </div>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <div>
+              <SignUp />
             </div>
           }
         />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { classNames } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -23,10 +24,10 @@ const TopBar = () => {
         <img src="/assets/icons/bar3.svg" alt="" className="md:hidden" />
         <span className="ml-auto max-sm:hidden">How it Works</span>
         <span className="mx-5 max-sm:hidden">Key Features</span>
-        <button className="max-sm:hidden bg-[#0DC143] pl-5 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
+        <Link to="/signup" className="max-sm:hidden bg-[#0DC143] pl-5 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
           <span className="flex-1">Get Started</span>
           <img src="/assets/icons/right-arrow.svg" alt="" />
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -39,10 +40,10 @@ const Hero = () => {
       <div className="text-white max-sm:text-center max-w-[32ch] md:max-w-[49ch] px-5 max-sm:mx-auto">
         <h1 className="text-[2.5rem] md:text-[5.625rem] leading-[3.15rem] md:leading-[5.813rem] font-bold">Send Solana Instantly</h1>
         <p className="text-sm leading-[1.103rem] font-medium mt-3 mb-5 md:mt-5 md:mb-7 md:text-lg md:leading-[1.418rem]">WhatSOL makes sending SOL as easy as sending a message. No complicated wallets, no confusing interfaces</p>
-        <button className="bg-[#0DC143] pl-5 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
+        <Link to="/signup" className="bg-[#0DC143] w-fit pl-5 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
           <span className="flex-1">Get Started</span>
           <img src="/assets/icons/right-arrow.svg" alt="" />
-        </button>
+        </Link>
       </div>
     </div>
   )
