@@ -6,10 +6,29 @@ body {
 }
 
 .hero-bg {
-    background-image: url("/assets/bg/hero-bg.svg");
+    background-image: 
+        url("/assets/bg/hero-blur-lines.svg"),
+        url("/assets/bg/hero-bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.footer-bg {
+    background-image: 
+        url("/assets/bg/footer-bg.svg");
+    background-repeat: no-repeat;
+    background-position: center 50px;
+}
+
+@media (min-width: 768px) {
+    .hero-bg{
+        background-size: contain;
+    }
+    .footer-bg {
+        background-image: url("/assets/bg/footer-bg-desktop.svg");
+        background-position: center top;
+    }
 }
 
 .no-scrollbar {

@@ -48,61 +48,6 @@ const Hero = () => {
   )
 }
 
-const whyChooseSol = [
-  {
-    title: 'Lightning-Fast Transactions',
-    description: 'Send SOL instantly, no more waiting',
-    bgImg: 'lightning-fast-transactions.svg',
-  },
-  {
-    title: 'Secure & Reliable',
-    description: "Built on the robust Solana blockchain, your transactions are safe and secure",
-    bgImg: 'secure-and-reliable.svg',
-  },
-  {
-    title: 'Easy to Use',
-    description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
-    bgImg: 'easy-to-use.svg',
-  },
-  {
-    title: 'Low Fees',
-    description: "Enjoy minimal transaction fees on the Solana network",
-    bgImg: 'low-fees.svg',
-  },
-  {
-    title: 'Global Access',
-    description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
-    bgImg: 'global-access.svg',
-  },
-  
-  {
-    title: 'Lightning-Fast Transactions',
-    description: 'Send SOL instantly, no more waiting',
-    bgImg: 'lightning-fast-transactions.svg',
-  },
-  {
-    title: 'Secure & Reliable',
-    description: "Built on the robust Solana blockchain, your transactions are safe and secure",
-    bgImg: 'secure-and-reliable.svg',
-  },
-  {
-    title: 'Easy to Use',
-    description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
-    bgImg: 'easy-to-use.svg',
-  },
-  {
-    title: 'Low Fees',
-    description: "Enjoy minimal transaction fees on the Solana network",
-    bgImg: 'low-fees.svg',
-  },
-  {
-    title: 'Global Access',
-    description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
-    bgImg: 'global-access.svg',
-  },
-  
-]
-
 const Steps = () => {
   return (
     <div className="px-4 md:w-[90%] mx-auto mt-24">
@@ -190,14 +135,19 @@ const FAQs = () => {
 const FAQ = ({ question, answer, isOpen, index, activeIndex, setActiveIndex }: { question: string, answer: string, isOpen: boolean, index: number, activeIndex: number | null, setActiveIndex: (index: number | null) => void }) => {
 
   return (
-    <div className="p-5 rounded-lg bg-[#FFFFFF12]">
+    <div className={classNames('p-5 rounded-lg bg-[#FFFFFF12]', isOpen ? 'border border-[#0DC143]' : '')}>
       <div className="flex items-center justify-between">
         <h3 className="text-sm md:text-lg font-medium">{question}</h3>
-        <img src="/assets/icons/circle-plus.svg" alt="" className="cursor-pointer" onClick={() => setActiveIndex(index === activeIndex ? null : index)} />
+        <button 
+          className="cursor-pointer"
+          onClick={() => setActiveIndex(index === activeIndex ? null : index)}
+        >
+          { isOpen ? <img src="/assets/icons/circle-minus.svg" alt="" /> : <img src="/assets/icons/circle-plus.svg" alt="" /> }
+        </button>
       </div>
       <div className={classNames('grid transition-[grid-template-rows_500ms]', isOpen ? 'grid-rows-[1fr] py-6' : 'grid-rows-[0fr]')}>
         <div className="overflow-hidden">
-          <p className="text-sm leading-[1.5rem]">{answer}</p>
+          <p className="text-sm leading-[1.5rem] max-w-[40ch] text-balance">{answer}</p>
         </div>
       </div>
     </div>
@@ -207,9 +157,9 @@ const FAQ = ({ question, answer, isOpen, index, activeIndex, setActiveIndex }: {
 const Footer = () => {
   return (
     <footer className="text-center mt-44 md:w-[90%] mx-auto">
-      <div className="bg-[#0859F4] rounded-3xl pt-32 pb-10" style={{ backgroundImage: `url('/assets/bg/footer-bg.svg')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center 50px', backgroundSize: '' }}>
+      <div className="bg-[#0859F4] rounded-3xl pt-32 pb-10 footer-bg">
         <img src="/assets/logo-icon.svg" alt="" className="mx-auto" />
-        <h2 className="text-[2.5rem] leading-[3.15rem]">Send Solana Instantly</h2>
+        <h2 className="text-[2.5rem] leading-[3.15rem]">Send Solana <br/> Instantly</h2>
         <div className="flex gap-x-6 justify-center mt-20">
           <span>How it Works</span>
           <span>Key features</span>
@@ -230,3 +180,58 @@ const Footer = () => {
 }
 
 export default Landing;
+
+const whyChooseSol = [
+  {
+    title: 'Lightning-Fast Transactions',
+    description: 'Send SOL instantly, no more waiting',
+    bgImg: 'lightning-fast-transactions.svg',
+  },
+  {
+    title: 'Secure & Reliable',
+    description: "Built on the robust Solana blockchain, your transactions are safe and secure",
+    bgImg: 'secure-and-reliable.svg',
+  },
+  {
+    title: 'Easy to Use',
+    description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
+    bgImg: 'easy-to-use.svg',
+  },
+  {
+    title: 'Low Fees',
+    description: "Enjoy minimal transaction fees on the Solana network",
+    bgImg: 'low-fees.svg',
+  },
+  {
+    title: 'Global Access',
+    description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
+    bgImg: 'global-access.svg',
+  },
+  
+  {
+    title: 'Lightning-Fast Transactions',
+    description: 'Send SOL instantly, no more waiting',
+    bgImg: 'lightning-fast-transactions.svg',
+  },
+  {
+    title: 'Secure & Reliable',
+    description: "Built on the robust Solana blockchain, your transactions are safe and secure",
+    bgImg: 'secure-and-reliable.svg',
+  },
+  {
+    title: 'Easy to Use',
+    description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
+    bgImg: 'easy-to-use.svg',
+  },
+  {
+    title: 'Low Fees',
+    description: "Enjoy minimal transaction fees on the Solana network",
+    bgImg: 'low-fees.svg',
+  },
+  {
+    title: 'Global Access',
+    description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
+    bgImg: 'global-access.svg',
+  },
+  
+]
