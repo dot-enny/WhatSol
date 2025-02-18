@@ -7,7 +7,7 @@ const Landing = () => {
       <Hero />
       <Steps />
       <WhyChooseSol />
-      <img src="/assets/illustrations/token-illustration.svg" alt="" />
+      <img src="/assets/illustrations/token-illustration.svg" alt="" className="mx-auto" />
       <SignUpCTA />
       <FAQs />
       <Footer />
@@ -17,21 +17,29 @@ const Landing = () => {
 
 const TopBar = () => {
   return (
-    <div className="flex justify-between items-center p-4">
-      <img src="/assets/logo.svg" alt="" />
-      <img src="/assets/icons/bar3.svg" alt="" />
+    <div className="md:pt-8">
+      <div className="flex max-sm:justify-between items-center max-sm:p-4 md:p-1 md:bg-black md:rounded-full">
+        <img src="/assets/logo.svg" alt="" />
+        <img src="/assets/icons/bar3.svg" alt="" className="md:hidden" />
+        <span className="ml-auto max-sm:hidden">How it Works</span>
+        <span className="mx-5 max-sm:hidden">Key Features</span>
+        <button className="max-sm:hidden bg-[#0DC143] pl-5 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
+          <span className="flex-1">Get Started</span>
+          <img src="/assets/icons/right-arrow.svg" alt="" />
+        </button>
+      </div>
     </div>
   )
 }
 
 const Hero = () => {
   return (
-    <div className="hero-bg min-h-screen">
+    <div className="hero-bg min-h-screen md:w-[90%] md:mx-auto grid">
       <TopBar />
-      <div className="text-white text-center max-w-[32ch] px-5 mx-auto pt-20">
-        <h1 className="text-[2.5rem] leading-[3.15rem] font-bold">Send Solana Instantly</h1>
-        <p className="text-sm font-medium mt-3 mb-5">WhatSOL makes sending SOL as easy as sending a message. No complicated wallets, no confusing interfaces</p>
-        <button className="bg-[#0DC143] pl-5 pr-1 py-1 text-sm rounded-full flex items-center gap-x-4 mx-auto">
+      <div className="text-white max-sm:text-center max-w-[32ch] md:max-w-[49ch] px-5 max-sm:mx-auto">
+        <h1 className="text-[2.5rem] md:text-[5.625rem] leading-[3.15rem] md:leading-[5.813rem] font-bold">Send Solana Instantly</h1>
+        <p className="text-sm leading-[1.103rem] font-medium mt-3 mb-5 md:mt-5 md:mb-7 md:text-lg md:leading-[1.418rem]">WhatSOL makes sending SOL as easy as sending a message. No complicated wallets, no confusing interfaces</p>
+        <button className="bg-[#0DC143] pl-5 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
           <span className="flex-1">Get Started</span>
           <img src="/assets/icons/right-arrow.svg" alt="" />
         </button>
@@ -71,13 +79,43 @@ const whyChooseSol = [
     bgColor: '#008829',
     bgImg: '3d-hexagon.svg',
   },
+  {
+    title: 'Lightning-Fast Transactions',
+    description: 'Send SOL instantly, no more waiting',
+    bgColor: '#0DC143',
+    bgImg: 'world-web.svg',
+  },
+  {
+    title: 'Secure & Reliable',
+    description: "Built on the robust Solana blockchain, your transactions are safe and secure",
+    bgColor: '#0DC143',
+    bgImg: 'squigly-line.svg',
+  },
+  {
+    title: 'Easy to Use',
+    description: "Send SOL just like sending a WhatsApp message.  No technical knowledge required",
+    bgColor: '#008829',
+    bgImg: '3d-hexagon.svg',
+  },
+  {
+    title: 'Low Fees',
+    description: "Enjoy minimal transaction fees on the Solana network",
+    bgColor: '#008829',
+    bgImg: '3d-hexagon.svg',
+  },
+  {
+    title: 'Global Access',
+    description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
+    bgColor: '#008829',
+    bgImg: '3d-hexagon.svg',
+  },
 ]
 
 const Steps = () => {
   return (
-    <div className="px-4">
-      <h2 className="text-[2.188rem] leading-[2.756rem] mb-5">Effortless SOL transfers in <br /> <span className="text-[#0DC143]">3 Simple Steps</span></h2>
-      <div className="grid gap-6">
+    <div className="px-4 md:w-[90%] mx-auto mt-24">
+      <h2 className="text-[2.188rem] md:text-[3.15rem] leading-[2.756rem] md:leading-[4.275rem] mb-5">Effortless SOL transfers in <br /> <span className="text-[#0DC143]">3 Simple Steps</span></h2>
+      <div className="grid gap-6 md:grid-cols-3">
         <Step title="Connect Your Wallet" description="Securely link your Solana wallet to WhatSOl in seconds." bgImg="world-web.svg" bgColor="#0DC143" />
         <Step title="Send SOL via WhatsApp" description="Type the amount and the recipient's phone number, then send!" bgImg="squigly-line.svg" bgColor="#0DC143" bgSize="cover" />
         <Step title="Instant Confirmation" description="Your SOL transfer is confirmed instantly on the Solana blockchain" bgImg="3d-hexagon.svg" bgColor="#008829" />
@@ -99,9 +137,9 @@ const Step = ({ title, description, bgImg, bgSize = '', bgColor }: { title: stri
 
 const WhyChooseSol = () => {
   return (
-    <div className="px-4 my-44">
-      <h2 className="text-[2.188rem] leading-[2.756rem] mb-5">Why Choose <span className="text-[#0DC143]">WhatSOL?</span></h2>
-      <div className="overflow-y-auto no-scrollbar">
+    <div className="my-44">
+      <h2 className="px-4 md:w-[90%] mx-auto text-[2.188rem] leading-[2.756rem] mb-5">Why Choose <span className="text-[#0DC143]">WhatSOL?</span></h2>
+      <div className="overflow-y-auto no-scrollbar pointer-events-none">
         <div className="flex gap-5 w-fit slide-track">
           {whyChooseSol.map((item, index) => (
             <WhyChooseSolItem key={index} {...item} />
@@ -125,9 +163,9 @@ const WhyChooseSolItem = ({ title, description, bgColor, bgImg }: { title: strin
 
 const SignUpCTA = () => {
   return (
-    <div className="text-center text-balance py-20 m-4 bg-[#0859F4] rounded-lg mt-36" style={{ backgroundImage: `url('/assets/bg/web-pattern.svg')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
-      <span className="text-[2.188rem] font-bold">Ready to <span className="bg-[#0DC143] rounded-full text-nowrap px-1">Send SOL</span> the Easy Way</span>
-      <button className="bg-[#0DC143] pl-5 pr-1 py-1 text-sm rounded-full flex items-center gap-x-4 mx-auto">
+    <div className="text-center text-balance pt-20 pb-10 m-4 bg-[#0859F4] rounded-[1.25rem] mt-36 md:w-[80%] md:mx-auto md:rounded-[1.875rem]" style={{ backgroundImage: `url('/assets/bg/web-pattern.svg')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
+      <span className="text-[2.188rem] md:text-[3.125rem] leading-[2.756rem] md:leading-[3.938rem] font-bold">Ready to <span className="bg-[#0DC143] rounded-full text-nowrap px-1">Send SOL</span> <br/> the Easy Way</span>
+      <button className="bg-[#0DC143] pl-5 pr-1 py-1 text-sm rounded-full flex items-center gap-x-4 mx-auto mt-10">
         <span className="flex-1">Get Started Now</span>
         <img src="/assets/icons/right-arrow.svg" alt="" />
       </button>
@@ -146,7 +184,7 @@ const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <div className="px-4 mt-32">
+    <div className="px-4 mt-32 md:w-[70%] mx-auto">
       <h2 className="text-[2.188rem] leading-[2.756rem] mb-5">FAQs</h2>
       <div className="grid gap-6">
         {questions.map((item, index) => (
@@ -176,7 +214,7 @@ const FAQ = ({ question, answer, isOpen, index, activeIndex, setActiveIndex }: {
 
 const Footer = () => {
   return (
-    <footer className="text-center mt-44">
+    <footer className="text-center mt-44 md:w-[90%] mx-auto">
       <div className="bg-[#0859F4] rounded-3xl pt-32 pb-10" style={{ backgroundImage: `url('/assets/bg/footer-bg.svg')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center 50px', backgroundSize: '' }}>
         <img src="/assets/logo-icon.svg" alt="" className="mx-auto" />
         <h2 className="text-[2.5rem] leading-[3.15rem]">Send Solana Instantly</h2>
