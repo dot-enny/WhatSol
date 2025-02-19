@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
-    <div className="bg-[#131313] min-h-screen text-white">
+    <div className="bg-[#131313] text-white max-w-[1440px] mx-auto">
       <Hero />
       <Steps />
       <WhyChooseSol />
@@ -35,7 +35,7 @@ const TopBar = () => {
 
 const Hero = () => {
   return (
-    <div className="hero-bg min-h-screen md:w-[90%] md:mx-auto grid">
+    <div className="hero-bg max-2xl:min-h-screen min-h-[50vw] md:w-[90%] md:mx-auto grid">
       <TopBar />
       <div className="text-white max-sm:text-center max-w-[32ch] md:max-w-[49ch] px-5 max-sm:mx-auto">
         <h1 className="text-[2.5rem] md:text-[5.625rem] leading-[3.15rem] md:leading-[5.813rem] font-bold">Send Solana Instantly</h1>
