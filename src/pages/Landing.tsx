@@ -8,7 +8,8 @@ const Landing = () => {
       <Hero />
       <Steps />
       <WhyChooseSol />
-      <img src="/assets/illustrations/token-illustration.svg" alt="" className="mx-auto" />
+      <Metrics />
+      <img src="/assets/illustrations/token-illustration.svg" alt="" className="mx-auto max-sm:p-2 mt-32" />
       <SignUpCTA />
       <FAQs />
       <Footer />
@@ -95,6 +96,24 @@ const WhyChooseSolItem = ({ title, description, bgImg }: { title: string, descri
       style={{ background: `url('/assets/bg/${bgImg}') no-repeat`, backgroundColor: '#008829', backgroundPosition: 'center', backgroundSize: 'cover' }}>
       <h3 className="text-lg font-bold">{title}</h3>
       <p className="text-sm">{description}</p>
+    </div>
+  )
+}
+
+const Metrics = () => {
+  return (
+    <div className="bg-[#0859F4] max-sm:m-4 md:w-[90%] mx-auto rounded-[1.25rem] metrics-bg flex flex-col p-4 pb-20">
+      <span className="bg-[#0DC143] font-bold text-[2.188rem] rounded-full px-1 mx-auto">Metrics</span>
+      <div className="md:flex justify-center gap-x-16 mt-10">
+        <div className="flex flex-col items-center">
+          <span className="[font-family:var(--Anton)] text-[6.25rem]">1200+</span>
+          <span className="text-lg font-bold">Website visits</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="[font-family:var(--Anton)] text-[6.25rem]">890+</span>
+          <span className="text-lg font-bold">Transactions completed</span>
+        </div>
+      </div>
     </div>
   )
 }
