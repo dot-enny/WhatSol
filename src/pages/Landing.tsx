@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { classNames } from "../utils/helpers";
 import { Link } from "react-router-dom";
+import CountUp from "../components/CountUp";
 
 const Landing = () => {
   return (
@@ -101,16 +102,43 @@ const WhyChooseSolItem = ({ title, description, bgImg }: { title: string, descri
 }
 
 const Metrics = () => {
+  const statsRef = useRef<HTMLElement | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setIsMounted(true);
+      } else {
+        setIsMounted(false);
+      }
+    });
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    };
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="bg-[#0859F4] max-sm:m-4 md:w-[90%] mx-auto rounded-[1.25rem] metrics-bg flex flex-col p-4 pb-20">
+    <div ref={statsRef as React.Ref<HTMLDivElement>} className="bg-[#0859F4] max-sm:m-4 md:w-[90%] mx-auto rounded-[1.25rem] metrics-bg flex flex-col p-4 pb-20">
       <span className="bg-[#0DC143] font-bold text-[2.188rem] rounded-full px-1 mx-auto">Metrics</span>
       <div className="md:flex justify-center gap-x-16 mt-10">
         <div className="flex flex-col items-center">
-          <span className="[font-family:var(--Anton)] text-[6.25rem]">1200+</span>
+          <span className="[font-family:var(--Anton)] text-[6.25rem]">
+            <CountUp end={1200} isMounted={isMounted} />
+          </span>
           <span className="text-lg font-bold">Website visits</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="[font-family:var(--Anton)] text-[6.25rem]">890+</span>
+          <span className="[font-family:var(--Anton)] text-[6.25rem]">
+            <CountUp end={890} isMounted={isMounted} />
+          </span>
           <span className="text-lg font-bold">Transactions completed</span>
         </div>
       </div>
@@ -121,7 +149,7 @@ const Metrics = () => {
 const SignUpCTA = () => {
   return (
     <div className="text-center text-balance pt-20 pb-10 m-4 bg-[#0859F4] rounded-[1.25rem] mt-36 md:w-[80%] md:mx-auto md:rounded-[1.875rem]" style={{ backgroundImage: `url('/assets/bg/web-pattern.svg')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
-      <span className="text-[2.188rem] md:text-[3.125rem] leading-[2.756rem] md:leading-[3.938rem] font-bold">Ready to <span className="bg-[#0DC143] rounded-full text-nowrap px-1">Send SOL</span> <br/> the Easy Way</span>
+      <span className="text-[2.188rem] md:text-[3.125rem] leading-[2.756rem] md:leading-[3.938rem] font-bold">Ready to <span className="bg-[#0DC143] rounded-full text-nowrap px-1">Send SOL</span> <br /> the Easy Way</span>
       <button className="bg-[#0DC143] pl-5 pr-1 py-1 text-sm rounded-full flex items-center gap-x-4 mx-auto mt-10">
         <span className="flex-1">Get Started Now</span>
         <img src="/assets/icons/right-arrow.svg" alt="" />
@@ -158,11 +186,11 @@ const FAQ = ({ question, answer, isOpen, index, activeIndex, setActiveIndex }: {
     <div className={classNames('p-5 rounded-lg bg-[#FFFFFF12]', isOpen ? 'border border-[#0DC143]' : '')}>
       <div className="flex items-center justify-between">
         <h3 className="text-sm md:text-lg font-medium">{question}</h3>
-        <button 
+        <button
           className="cursor-pointer"
           onClick={() => setActiveIndex(index === activeIndex ? null : index)}
         >
-          { isOpen ? <img src="/assets/icons/circle-minus.svg" alt="" /> : <img src="/assets/icons/circle-plus.svg" alt="" /> }
+          {isOpen ? <img src="/assets/icons/circle-minus.svg" alt="" /> : <img src="/assets/icons/circle-plus.svg" alt="" />}
         </button>
       </div>
       <div className={classNames('grid transition-[grid-template-rows_500ms]', isOpen ? 'grid-rows-[1fr] py-6' : 'grid-rows-[0fr]')}>
@@ -179,7 +207,7 @@ const Footer = () => {
     <footer className="text-center mt-44 md:w-[90%] mx-auto">
       <div className="bg-[#0859F4] rounded-3xl pt-32 pb-10 footer-bg">
         <img src="/assets/logo-icon.svg" alt="" className="mx-auto" />
-        <h2 className="text-[2.5rem] leading-[3.15rem]">Send Solana <br/> Instantly</h2>
+        <h2 className="text-[2.5rem] leading-[3.15rem]">Send Solana <br /> Instantly</h2>
         <div className="flex gap-x-6 justify-center mt-20">
           <span>How it Works</span>
           <span>Key features</span>
@@ -227,7 +255,7 @@ const whyChooseSol = [
     description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
     bgImg: 'global-access.svg',
   },
-  
+
   {
     title: 'Lightning-Fast Transactions',
     description: 'Send SOL instantly, no more waiting',
@@ -253,5 +281,5 @@ const whyChooseSol = [
     description: "Send SOL to anyone, anywhere in the world, with a WhatsApp account",
     bgImg: 'global-access.svg',
   },
-  
+
 ]
