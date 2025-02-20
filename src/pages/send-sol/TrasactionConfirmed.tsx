@@ -9,8 +9,8 @@ export const TransactionConfirmed = () => {
             <img src="/assets/logo.svg" alt="" className="max-lg:hidden fixed top-12 left-16" />
             <Container>
                 <div>
-                    <img src="/assets/logo.svg" alt="" className="mx-auto" />
-                    <div className="p-6 max-lg:gradient-border">
+                    <img src="/assets/logo.svg" alt="" className="mx-auto mb-10" />
+                    <div className="p-6 gradient-border">
                         <img src="/assets/illustrations/success.svg" alt="" className="mx-auto mb-6" />
                         <div className="font-semibold">Success!</div>
                         <p className="text-sm mt-2 mb-10">

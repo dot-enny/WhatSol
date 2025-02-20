@@ -111,3 +111,9 @@ input[type=number] {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+@media (min-width: 1024px) {
+    .gradient-border {
+        background-image: none;
+    }
+}
