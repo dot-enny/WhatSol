@@ -4,14 +4,14 @@ export const SignIn = () => {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    navigate('/signup/verify')
+    navigate('/home')
   }
 
   return (
     <div className="">
     <div className="text-lg font-bold">Sign In</div>
     <p className="text-sm mt-2 mb-10">
-      Create a secure password to access your <br /> WhatSOl account.
+      Send SOL to anyone on your contact list. Sign In <br /> with your number to get started.
     </p>
     <form className="min-w-[258px] grid gap-y-6" onSubmit={handleSignIn}>
       <label className="flex flex-col items-start">

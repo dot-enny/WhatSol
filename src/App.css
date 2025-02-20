@@ -81,8 +81,8 @@ input[type=number] {
         background: 
             url("/assets/bg/auth-layout-desktop-bg.svg"),
             url("/assets/bg/auth-layout-bg.svg");
-        background-repeat: no-repeat;
-        background-size: 50% cover;
+        background-repeat: no-repeat, repeat-x;
+        background-size: 50%;
         background-position: right top, left top;
     }
 }
@@ -103,4 +103,11 @@ input[type=number] {
     100% {
         transform: translateX(-50%);
     }
+}
+
+
+.gradient-border {
+    background-image: url('/assets/gradient-border.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
