@@ -10,7 +10,7 @@ export const ConfirmTransaction = () => {
             <p className="text-sm mt-2 mb-6">
                 Review Transaction History, Confirm Recipient <br /> Details
             </p>
-            <div className="mb-5 gradient-border">
+            <div className="mb-5 max-lg:gradient-border">
                 <div className="text-sm flex flex-col gap-y-4 p-6 pt-8">
                     <div className="flex gap-x-2 text-start items-end">
                         <span className="inline-block">

@@ -10,7 +10,7 @@ export const TransactionConfirmed = () => {
             <Container>
                 <div>
                     <img src="/assets/logo.svg" alt="" className="mx-auto" />
-                    <div className="my-8 p-6 gradient-border">
+                    <div className="p-6 max-lg:gradient-border">
                         <img src="/assets/illustrations/success.svg" alt="" className="mx-auto mb-6" />
                         <div className="font-semibold">Success!</div>
                         <p className="text-sm mt-2 mb-10">
@@ -18,7 +18,7 @@ export const TransactionConfirmed = () => {
                         </p>
                     </div>
                 </div>
-                <ContinueButton onClick={() => navigate('/home')}>Send SOL</ContinueButton>
+                <ContinueButton onClick={() => navigate('/home')}>Done</ContinueButton>
             </Container>
         </div>
     )
@@ -26,8 +26,8 @@ export const TransactionConfirmed = () => {
 
 const Container = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="lg:bg-[#262626] lg:pt-16 lg:pb-24 lg:px-24 lg:rounded-2xl lg:min-w-[500px]">
-            {children}
-        </div>
+      <div className="lg:bg-[#262626] lg:px-24 lg:rounded-2xl lg:min-w-[500px] h-[500px] overflow-y-auto no-scrollbar grid place-items-center py-4">
+        { children }
+      </div>
     )
-}
+  }

@@ -31,9 +31,9 @@ export const Home = () => {
 }
 
 const Container = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <div className="lg:bg-[#262626] lg:pt-16 lg:pb-24 lg:px-24 lg:rounded-2xl lg:min-w-[500px]">
-            {children}
-        </div>
-    )
+  return (
+    <div className="lg:bg-[#262626] lg:px-24 lg:rounded-2xl lg:min-w-[500px] h-[500px] overflow-y-auto no-scrollbar grid place-items-center">
+      { children }
+    </div>
+  )
 }
