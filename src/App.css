@@ -11,6 +11,27 @@ body {
     background-color: #131313;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .hero-bg {
     background-image:
         url("/assets/bg/hero-blur-bg.png"),
@@ -29,7 +50,7 @@ body {
 }
 
 .auth-layout-bg {
-    background: url("/assets/bg/auth-layout-bg.svg"), linear-gradient(180deg, #0DC143 0%, rgba(13, 193, 67, 0) 97.04%), rgba(19, 19, 19, 1);
+    background: url("/assets/bg/auth-layout-bg.svg"), linear-gradient(180deg, #0A9A36 0%, rgba(10,154,54,0) 28.04%);
     background-repeat: no-repeat;
     /* background-size: cover; */
     background-position: center top;
@@ -52,15 +73,6 @@ body {
             url("/assets/bg/footer-blur-bg.png"),
             url("/assets/bg/footer-bg-desktop.svg");
         background-position: center top;
-    }
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-        display: none;
     }
 }
 
