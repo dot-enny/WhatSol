@@ -6,7 +6,7 @@ export const SelectContact = () => {
 
     return (
         <div>
-            <div className="text-lg font-bold">Send Sol</div>
+            <div className="text-lg font-bold">Send SOL</div>
             <p className="text-sm mt-2 mb-10">
                 Fill in the recipients phone number or select <br/> from your contact list
             </p>

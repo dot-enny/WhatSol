@@ -16,7 +16,7 @@ export const Home = () => {
                 <div>
                     <img src="/assets/logo-alt.svg" alt="" className="mx-auto" />
                     <div className="my-10">
-                        <div className="text-lg font-bold">Send Sol</div>
+                        <div className="text-lg font-bold">Send SOL</div>
                         <p className="text-sm mt-2 mb-10">
                             Click to Send SOL to any number or anyone on  <br /> your contact list
                         </p>
