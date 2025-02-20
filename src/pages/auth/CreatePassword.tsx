@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { ContinueButton } from "../../components/ContinueButton";
 
 export const CreatePassword = () => {
 
@@ -20,21 +21,12 @@ export const CreatePassword = () => {
           <span>Password</span>
           <input type="password" placeholder="Kim3544%" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
         </label>
-        <label className="flex flex-col items-start">
+        <label className="flex flex-col items-start mb-10">
           <span>Confirm Password</span>
           <input type="password" placeholder="*******" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
         </label>
-        <ContinueButton />
+        <ContinueButton>Continue</ContinueButton>
       </form>
     </div>
-  )
-}
-
-const ContinueButton = () => {
-  return (
-    <button className="w-full mt-10 bg-[#0DC143] pl-12 pr-1 py-1 max-sm:text-sm rounded-full flex items-center gap-x-4 max-sm:mx-auto">
-      <span className="flex-1">Continue</span>
-      <img src="/assets/icons/right-arrow.svg" alt="" />
-    </button>
   )
 }
