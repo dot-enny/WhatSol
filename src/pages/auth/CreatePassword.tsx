@@ -1,12 +1,12 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const CreatePassword = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
-    // navigate('/verify')
     e.preventDefault()
+    navigate('/signin')
   }
 
   return (
