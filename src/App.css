@@ -76,6 +76,17 @@ input[type=number] {
     }
 }
 
+@media (min-width: 1024px) {
+    .auth-layout-bg {
+        background: 
+            url("/assets/bg/auth-layout-desktop-bg.svg"),
+            url("/assets/bg/auth-layout-bg.svg");
+        background-repeat: no-repeat;
+        background-size: 50% cover;
+        background-position: right top, left top;
+    }
+}
+
 .slide-track {
     animation: scroll 20s linear infinite;
 

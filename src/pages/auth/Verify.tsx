@@ -11,7 +11,7 @@ export const Verify = () => {
 
   return (
     <div className="">
-      <div className="text-lg font-bold">Sign Up</div>
+      <div className="text-lg font-bold">Verify its you</div>
       <p className="text-sm mt-2 mb-10">
         Enter the verification code sent to your phone <br /> number.
       </p>
