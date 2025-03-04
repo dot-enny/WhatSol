@@ -1,66 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ContinueButton } from "../../components/ContinueButton";
-import { api } from "../../api/axios";
-import { useState } from "react";
 import { Spinner } from "../../components/Spinner";
-import { useDefaultStore } from "../../lib/DefaultStore";
-import React from "react";
+import { useSignup } from "../../hooks/useSignup";
 
 export const SignUp = () => {
-  const navigate = useNavigate();
-  const { setPhone, phone } = useDefaultStore();
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const { phone } = Object.fromEntries(formData) as { phone: string };
-    const trimmedPhone = phone.replace(/\s+/g, '');
-    console.log(trimmedPhone);
-    if (phone.trim() === "") return;
-    setPhone(trimmedPhone);
-    const body = { phone: trimmedPhone };
-    try {
-      setError('');
-      setIsLoading(true);
-      const signUpResponse = await api.post('/auth/signup', body)
-      await handleRequestOTP();
-      console.log('signup', signUpResponse.data);
-      navigate('/signup/verify')
-    } catch (error) {
-      console.error(error);
-      if ((error as any).response?.status === 400) {
-        if ((error as any).response?.data.detail === 'Username already registered') {
-          alert('Phone number already exists, you will be redirected to the signin page')
-          navigate('/signin')
-        }
-      }
-      if (error instanceof Error) {
-        console.error('error signing up', error.message);
-        setError(error.message);
-      } else {
-        setError("An unexpected error occurred.");
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  const handleRequestOTP = async () => {
-    const body = { phone };
-    try {
-      const requestOTPResponse = await api.post("/auth/request-otp", body);
-      console.log('requestOTP', requestOTPResponse.data);
-    } catch (error) {
-      console.error('error requesting otp')
-      throw error;
-    }
-  }
+  const { signUp, isLoading, error } = useSignup();
 
   return (
-    <form onSubmit={handleSignup}>
+    <form onSubmit={signUp}>
       <div className="text-lg font-bold">Sign Up</div>
       <p className="text-sm mt-2 mb-10">
         Sign up with your number to get started.

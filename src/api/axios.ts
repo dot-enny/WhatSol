@@ -15,6 +15,7 @@ api.interceptors.response.use(
     (error) => {
         if (error.response && error.response.status === 401) {
             // Access token expired
+            console.log(error)
             console.log(window.location.href)
             localStorage.removeItem('accessToken');
             useDefaultStore.getState().setPreviousRoute(window.location.pathname);
