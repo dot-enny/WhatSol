@@ -5,7 +5,7 @@ import { useDefaultStore } from "../lib/DefaultStore";
 export const useGetSolBalance = () => {
     const { accessToken } = useDefaultStore();
 
-    const [solBalance, setSolBalance] = useState(false);
+    const [solBalance, setSolBalance] = useState('');
     const [isFetching, setIsFetching] = useState(false);
 
 
