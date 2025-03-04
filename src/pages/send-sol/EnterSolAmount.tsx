@@ -3,10 +3,11 @@ import { ContinueButton } from "../../components/ContinueButton"
 import { useGetSolBalance } from "../../hooks/useGetSolBalance";
 import React from "react";
 import { useDefaultStore } from "../../lib/DefaultStore";
+import { classNames } from "../../utils/helpers";
 
 export const EnterSolAmount = () => {
     const navigate = useNavigate();
-    const { isFetching, solBalance } = useGetSolBalance();
+    const { isFetching, solBalance, error } = useGetSolBalance();
     const { setRecipientPhone, setSolAmount } = useDefaultStore();
 
     const handleFormState = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,7 +19,7 @@ export const EnterSolAmount = () => {
         setRecipientPhone(trimmedRecipientPhone);
         setSolAmount(trimmedAmount);
         navigate('/send-sol/confirm-transaction')
-    }
+    };
 
     return (
         <form onSubmit={handleFormState}>
@@ -35,7 +36,7 @@ export const EnterSolAmount = () => {
                     <span>Amount of SOL</span>
                     <input type="text" name="amount" placeholder="e.g 2.5" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
                 </label>
-                <div className="text-[#0DC143] text-xs text-start">Current Balance : { isFetching ? '...' : `${solBalance} SOL` }</div>
+                <div className={classNames('text-[#0DC143] text-xs text-start text-wrap', error && 'text-red-400')}>Current Balance : { error ? error : isFetching ? 'loading...' : `${solBalance} SOL` }</div>
             </div>
             <ContinueButton>Send SOL</ContinueButton>
         </form>

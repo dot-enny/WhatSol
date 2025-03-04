@@ -7,7 +7,7 @@ export const useGetSolBalance = () => {
 
     const [solBalance, setSolBalance] = useState('');
     const [isFetching, setIsFetching] = useState(false);
-
+    const [error, setError] = useState('');
 
     useEffect(() => {
         let ignore = false;
@@ -25,7 +25,12 @@ export const useGetSolBalance = () => {
                 });
                 setSolBalance(response.data.wallet_balance);
             } catch (error) {
-                console.error('error sending sol', error);
+                if (error instanceof Error) {
+                    console.error('error getting sol balance', error.message);
+                    setError(error.message);
+                } else {
+                    setError("An unexpected error occurred.");
+                }
             } finally {
                 setIsFetching(false);
             }
@@ -36,5 +41,5 @@ export const useGetSolBalance = () => {
         return () => { ignore = true }
     }, [])
 
-    return { isFetching, solBalance }
+    return { isFetching, solBalance, error }
 }
