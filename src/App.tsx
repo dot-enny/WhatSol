@@ -13,16 +13,19 @@ import { DefaultLayout } from './layouts/DefaultLayout';
 import { ConfirmTransaction } from './pages/send-sol/ConfirmTransaction';
 import { EnterSolAmount } from './pages/send-sol/EnterSolAmount';
 import { TransactionConfirmed } from './pages/send-sol/TrasactionConfirmed';
+// import { useDefaultStore } from './lib/DefaultStore';
+
 function App() {
+  // const { accessToken } = useDefaultStore();
+
   return (
     <Router>
       <Routes>
         <Route
           path="/"
           element={
-            <div>
+              // accessToken ? <Navigate to="/home" replace={true} /> :
               <Landing />
-            </div>
           }
         />
         <Route path="/signup" element={<AuthLayout />}>

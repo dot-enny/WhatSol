@@ -7,9 +7,10 @@ import { Spinner } from "../../components/Spinner";
 
 export const SignIn = () => {
   const navigate = useNavigate();
-  const { setAccessToken, previousRoute, setPreviousRoute } = useDefaultStore();
+  const { setAccessToken, previousRoute } = useDefaultStore();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -19,18 +20,24 @@ export const SignIn = () => {
     const trimmedPhone = phone.replace(/\s+/g, '');
     const body = { phone: trimmedPhone, password };
     try {
+      setError('');
       setIsLoading(true);
       const response = await api.post('/auth/login', body);
       setAccessToken(response.data.access_token);
       console.log(response);
       if(previousRoute) {
         navigate(previousRoute);
-        setPreviousRoute('');
+        // setPreviousRoute('');
       } else {
         navigate('/home');
       }
     } catch (error) {
-      console.error('error signing in', error);
+      if (error instanceof Error) {
+        console.error('error signing in', error.message);
+        setError(error.message);
+    } else {
+        setError("An unexpected error occurred.");
+    }
     } finally {
       setIsLoading(false);
     }
@@ -51,7 +58,11 @@ export const SignIn = () => {
           <span>Password</span>
           <input type="password" name="password" placeholder="*******" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
         </label>
-        <ContinueButton>
+        {
+          error &&
+          <div className="text-red-400">{error}</div>
+        }
+        <ContinueButton disabled={isLoading}>
           <span className={`${isLoading ? 'invisible' : ''}`}>Continue</span>
           <Spinner className={`${!isLoading ? 'invisible' : 'size-2'}`} />
         </ContinueButton>
