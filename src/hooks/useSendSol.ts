@@ -8,6 +8,7 @@ export const useSendSol = () => {
     const { accessToken, recipient_phone, amount } = useDefaultStore();
 
     const [isSending, setIsSending] = useState(false);
+    const [error, setError] = useState('');
 
     const sendSol = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -17,25 +18,31 @@ export const useSendSol = () => {
 
         const body = { recipient_phone, amount: Number(amount) };
         try {
+            setError('');
             setIsSending(true);
-            const response = await api.post('send', 
+            const response = await api.post('send',
                 body,
                 {
-                    headers: { 
+                    headers: {
                         'Content-Type': 'application/json',
-                         Authorization: `Bearer ${accessToken}`,
-                         withCredentials: true
+                        Authorization: `Bearer ${accessToken}`,
+                        withCredentials: true
                     },
                 }
             );
             console.log(response);
             navigate('/transaction-confirmed');
         } catch (error) {
-            console.error('error sending sol', error);
+            if (error instanceof Error) {
+                console.error('error sending sol', error);
+                setError(error.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setIsSending(false);
         }
     }
 
-    return { isSending,sendSol }
+    return { isSending, sendSol, error }
 }

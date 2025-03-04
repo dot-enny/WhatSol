@@ -11,6 +11,7 @@ export const SignUp = () => {
   const { setPhone, phone } = useDefaultStore();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ export const SignUp = () => {
     setPhone(trimmedPhone);
     const body = { phone: trimmedPhone };
     try {
+      setError('');
       setIsLoading(true);
       const signUpResponse = await api.post('/auth/signup', body)
       await handleRequestOTP();
@@ -34,6 +36,12 @@ export const SignUp = () => {
           alert('Phone number already exists, you will be redirected to the signin page')
           navigate('/signin')
         }
+      }
+      if (error instanceof Error) {
+        console.error('error signing up', error.message);
+        setError(error.message);
+      } else {
+        setError("An unexpected error occurred.");
       }
     } finally {
       setIsLoading(false);
@@ -58,6 +66,10 @@ export const SignUp = () => {
         Sign up with your number to get started.
       </p>
       <EnterPhoneNumber />
+      {
+        error &&
+        <div className="text-red-400">{error}</div>
+      }
       <ContinueButton disabled={isLoading}>
         <span className={`${isLoading ? 'invisible' : ''}`}>Continue</span>
         <Spinner className={`${!isLoading ? 'invisible' : 'size-2'}`} />

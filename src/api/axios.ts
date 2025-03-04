@@ -5,6 +5,7 @@ const BASE_URL = 'https://7183-102-89-23-226.ngrok-free.app/';
 
 export const api = axios.create({
     baseURL: BASE_URL,
+    withCredentials: true,
 });
 
 // Response interceptor

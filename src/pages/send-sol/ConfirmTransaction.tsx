@@ -6,7 +6,7 @@ import { useDefaultStore } from "../../lib/DefaultStore";
 
 export const ConfirmTransaction = () => {
     const navigate = useNavigate();
-    const { sendSol, isSending } = useSendSol();
+    const { sendSol, isSending, error } = useSendSol();
     const { recipient_phone, amount } = useDefaultStore();
 
     return (
@@ -22,7 +22,7 @@ export const ConfirmTransaction = () => {
                             Recipient's <br /> phone number :
                         </span>
                         <span className="text-[#0DC143] inline-block">
-                            { recipient_phone }
+                            {recipient_phone}
                         </span>
                     </div>
                     <Detail detail="Amount of SOL" value={`${amount} SOL`} />
@@ -31,6 +31,10 @@ export const ConfirmTransaction = () => {
                     <Detail detail="Total amount" value={`${amount} SOL`} />
                 </div>
             </div>
+            {
+                error &&
+                <div className="text-red-400">{error}</div>
+            }
             <ContinueButton disabled={isSending}>
                 <span className={`${isSending ? 'invisible' : ''}`}>Send SOL</span>
                 <Spinner className={`${!isSending ? 'invisible' : 'size-2'}`} />
