@@ -8,7 +8,7 @@ import { CreatePassword } from './pages/auth/CreatePassword';
 import { AuthLayout } from './layouts/AuthLayout';
 import { SignIn } from './pages/auth/SignIn';
 import { Home } from './pages/send-sol/Home';
-import { SelectContact } from './pages/send-sol/SelectContact';
+// import { SelectContact } from './pages/send-sol/SelectContact';
 import { DefaultLayout } from './layouts/DefaultLayout';
 import { ConfirmTransaction } from './pages/send-sol/ConfirmTransaction';
 import { EnterSolAmount } from './pages/send-sol/EnterSolAmount';
@@ -35,7 +35,7 @@ function App() {
         </Route>
         <Route path="/home" element={<Home />} />
         <Route path="/send-sol" element={<DefaultLayout />}>
-          <Route path="select-contact" element={<SelectContact />} />
+          {/* <Route path="select-contact" element={<SelectContact />} /> */}
           <Route path="enter-sol-amount" element={<EnterSolAmount />} />
           <Route path="confirm-transaction" element={<ConfirmTransaction />} />
         </Route>

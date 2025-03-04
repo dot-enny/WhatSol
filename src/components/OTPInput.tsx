@@ -1,10 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 // const correctOTP = "123456" // validate from your server
 
-function OtpInputWithValidation({ numberOfDigits }: { numberOfDigits: number }) {
-  const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
-  const [otpError] = useState('');
+interface OTPInputProps {
+  numberOfDigits: number;
+  otp: string[];
+  setOtp: React.Dispatch<React.SetStateAction<string[]>>;
+  otpError: string;
+}
+
+function OtpInputWithValidation({ numberOfDigits, otp, setOtp, otpError }: OTPInputProps) {
+  // const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
+  // const [otpError] = useState('');
   const otpBoxReference = useRef<(HTMLInputElement | null)[]>([]);
 
   function handleChange(value: string, index: number) {

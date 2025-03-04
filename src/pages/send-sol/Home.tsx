@@ -6,7 +6,7 @@ export const Home = () => {
     const navigate = useNavigate();
 
     const handleNextStep = () => {
-        navigate('/send-sol/select-contact');
+        navigate('/send-sol/enter-sol-amount');
     }
     
     return (
