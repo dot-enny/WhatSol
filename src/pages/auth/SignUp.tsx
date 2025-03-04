@@ -16,11 +16,11 @@ export const SignUp = () => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const { phone } = Object.fromEntries(formData) as { phone: string };
-    console.log({ phone });
+    const trimmedPhone = phone.replace(/\s+/g, '');
+    console.log(trimmedPhone);
     if (phone.trim() === "") return;
-    setPhone(phone);
-
-    const body = { phone };
+    setPhone(trimmedPhone);
+    const body = { phone: trimmedPhone };
     try {
       setIsLoading(true);
       const signUpResponse = await api.post('/auth/signup', body)

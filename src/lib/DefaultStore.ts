@@ -30,8 +30,8 @@ export const useDefaultStore = create<DefaultStore>()(
         }),
         {
             name: 'default-store',
-            partialize: (state) => ({ accessToken: state.accessToken, phone: state.phone }),
-            storage: createJSONStorage(() => sessionStorage)
+            partialize: (state) => ({ accessToken: state.accessToken, phone: state.phone, recipient_phone: state.recipient_phone, amount: state.amount }),
+            storage: createJSONStorage(() => localStorage)
         }
     )
 )

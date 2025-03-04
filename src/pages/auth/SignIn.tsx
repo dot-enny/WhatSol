@@ -7,7 +7,7 @@ import { Spinner } from "../../components/Spinner";
 
 export const SignIn = () => {
   const navigate = useNavigate();
-  const { setPhone, setAccessToken, previousRoute, setPreviousRoute } = useDefaultStore();
+  const { setAccessToken, previousRoute, setPreviousRoute } = useDefaultStore();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,12 +16,11 @@ export const SignIn = () => {
     const formData = new FormData(e.target as HTMLFormElement);
     const { phone, password } = Object.fromEntries(formData) as { phone: string, password: string };
     console.log({ phone, password });
-
-    const body = { phone: `+${phone}`, password };
+    const trimmedPhone = phone.replace(/\s+/g, '');
+    const body = { phone: trimmedPhone, password };
     try {
       setIsLoading(true);
       const response = await api.post('/auth/login', body);
-      setPhone(`+${phone}`);
       setAccessToken(response.data.access_token);
       console.log(response);
       if(previousRoute) {
@@ -46,7 +45,7 @@ export const SignIn = () => {
       <form className="min-w-[258px] grid gap-y-6" onSubmit={handleSignIn}>
         <label className="flex flex-col items-start">
           <span>Phone Number</span>
-          <input type="number" name="phone" placeholder="+1 (863) 293 2088" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
+          <input type="text" name="phone" placeholder="+1 (863) 293 2088" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
         </label>
         <label className="flex flex-col items-start mb-10">
           <span>Password</span>

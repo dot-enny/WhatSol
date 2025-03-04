@@ -83,9 +83,9 @@ export const Verify = () => {
     }
   }, [cooldownSeconds]);
 
-  useEffect(() => {
-    console.log(otp.join(""));
-  }, [otp]);
+  // useEffect(() => {
+  //   console.log(otp.join(""));
+  // }, [otp]);
 
   return (
     <form>

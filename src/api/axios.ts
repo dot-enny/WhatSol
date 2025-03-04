@@ -16,7 +16,7 @@ api.interceptors.response.use(
         if (error.response && error.response.status === 401) {
             // Access token expired
             console.log(window.location.href)
-            sessionStorage.removeItem('accessToken');
+            localStorage.removeItem('accessToken');
             useDefaultStore.getState().setPreviousRoute(window.location.pathname);
             alert('Your session has expired. Please log in again.');
             window.location.href = '/signin';
@@ -29,7 +29,7 @@ api.interceptors.response.use(
 // Request interceptor
 // api.interceptors.request.use(
 //     (config) => {
-//         const accessToken = sessionStorage.getItem('access_token');
+//         const accessToken = localStorage.getItem('access_token');
 //         if (accessToken) {
 //             config.headers.Authorization = `Bearer ${accessToken}`;
 //         }

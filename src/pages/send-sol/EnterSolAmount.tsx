@@ -13,8 +13,10 @@ export const EnterSolAmount = () => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
         const { recipient_phone, amount } = Object.fromEntries(formData) as { recipient_phone: string, amount: string };
-        setRecipientPhone(recipient_phone);
-        setSolAmount(amount);
+        const trimmedRecipientPhone = recipient_phone.replace(/\s+/g, '');
+        const trimmedAmount = amount.replace(/\s+/g, '');
+        setRecipientPhone(trimmedRecipientPhone);
+        setSolAmount(trimmedAmount);
         navigate('/send-sol/confirm-transaction')
     }
 
