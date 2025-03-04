@@ -21,7 +21,6 @@ export const useGetSolBalance = () => {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${accessToken}`,
                     },
-                    withCredentials: true
                 });
                 setSolBalance(response.data.wallet_balance);
             } catch (error) {
