@@ -55,7 +55,7 @@ export const SignUp = () => {
     <form onSubmit={handleSignup}>
       <div className="text-lg font-bold">Sign Up</div>
       <p className="text-sm mt-2 mb-10">
-        Send SOL to anyone on your contact list. Sign <br /> up with your number to get started.
+        Sign up with your number to get started.
       </p>
       <EnterPhoneNumber />
       <ContinueButton disabled={isLoading}>

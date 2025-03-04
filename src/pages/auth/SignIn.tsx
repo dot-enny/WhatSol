@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ContinueButton } from "../../components/ContinueButton";
 import React, { useState } from "react";
 import { api } from "../../api/axios";
@@ -25,7 +25,7 @@ export const SignIn = () => {
       const response = await api.post('/auth/login', body);
       setAccessToken(response.data.access_token);
       console.log(response);
-      if(previousRoute) {
+      if (previousRoute) {
         navigate(previousRoute);
         // setPreviousRoute('');
       } else {
@@ -35,19 +35,21 @@ export const SignIn = () => {
       if (error instanceof Error) {
         console.error('error signing in', error.message);
         setError(error.message);
-    } else {
+      } else {
         setError("An unexpected error occurred.");
-    }
+      }
     } finally {
       setIsLoading(false);
     }
   }
 
+  
+
   return (
     <div className="">
       <div className="text-lg font-bold">Sign In</div>
       <p className="text-sm mt-2 mb-10">
-        Send SOL to anyone on your contact list. Sign In <br /> with your number to get started.
+        Sign In with your number to get started.
       </p>
       <form className="min-w-[258px] grid gap-y-6" onSubmit={handleSignIn}>
         <label className="flex flex-col items-start">
@@ -66,6 +68,10 @@ export const SignIn = () => {
           <span className={`${isLoading ? 'invisible' : ''}`}>Continue</span>
           <Spinner className={`${!isLoading ? 'invisible' : 'size-2'}`} />
         </ContinueButton>
+        <div className="flex justify-between">
+          <span>Don't have an account yet ?</span>
+          <Link to="/signup" className="text-[#0DC143]">Register</Link>
+        </div>
       </form>
     </div>
   )

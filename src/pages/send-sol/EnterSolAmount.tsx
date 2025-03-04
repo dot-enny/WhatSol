@@ -25,7 +25,7 @@ export const EnterSolAmount = () => {
         <form onSubmit={handleFormState}>
             <div className="text-lg font-bold">Send SOL</div>
             <p className="text-sm mt-2 mb-10">
-                Fill in the recipients phone number or select <br /> from your contact list
+                Fill in the recipients phone number
             </p>
             <div className="mb-14">
                 <label className="flex flex-col items-start my-4">
