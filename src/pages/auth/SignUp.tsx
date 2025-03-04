@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ContinueButton } from "../../components/ContinueButton";
 import { api } from "../../api/axios";
 import { useState } from "react";
@@ -58,10 +58,14 @@ export const SignUp = () => {
         Send SOL to anyone on your contact list. Sign <br /> up with your number to get started.
       </p>
       <EnterPhoneNumber />
-      <ContinueButton>
+      <ContinueButton disabled={isLoading}>
         <span className={`${isLoading ? 'invisible' : ''}`}>Continue</span>
         <Spinner className={`${!isLoading ? 'invisible' : 'size-2'}`} />
       </ContinueButton>
+      <div className="flex justify-between mt-4">
+        <span>Already have an account ?</span>
+        <Link to="/signin" className="text-[#0DC143]">Login</Link>
+      </div>
     </form>
   )
 }
