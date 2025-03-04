@@ -36,7 +36,7 @@ export const EnterSolAmount = () => {
                     <span>Amount of SOL</span>
                     <input type="text" name="amount" placeholder="e.g 2.5" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
                 </label>
-                <div className={classNames('text-[#0DC143] text-xs text-start text-wrap', error && 'text-red-400')}>Current Balance : { error ? error : isFetching ? 'loading...' : `${solBalance} SOL` }</div>
+                <div className={classNames('text-[#0DC143] text-xs text-start text-wrap', error && 'text-red-400')}>Current Balance : { error ? JSON.stringify(error) : isFetching ? 'loading...' : `${solBalance} SOL` }</div>
             </div>
             <ContinueButton>Send SOL</ContinueButton>
         </form>

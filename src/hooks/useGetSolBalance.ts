@@ -13,10 +13,11 @@ export const useGetSolBalance = () => {
         let ignore = false;
 
         const getSolBalance = async () => {
+            setError('');
             try {
                 if (ignore) return;
                 setIsFetching(true);
-                const response = await api.get('wallet_balance', {
+                const response = await api.get('wallet_balanc', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${accessToken}`,
@@ -27,7 +28,7 @@ export const useGetSolBalance = () => {
             } catch (error) {
                 if (error instanceof Error) {
                     console.error('error getting sol balance', error.message);
-                    setError(error.message);
+                    setError(error as unknown as string);
                 } else {
                     setError("An unexpected error occurred.");
                 }
