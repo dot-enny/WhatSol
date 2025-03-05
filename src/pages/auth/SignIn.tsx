@@ -20,9 +20,10 @@ export const SignIn = () => {
             type="text"
             name="phone"
             placeholder="+1 (863) 293 2088"
-            pattern="^\+\d+$"
-            title="Phone number must start with a '+' and followed by digits"
+            pattern="^\+[\d\s]+$"
+            title="Phone number must start with a '+' and be followed by digits and optional spaces"
             className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0"
+            required
           />
         </label>
         <label className="flex flex-col items-start mb-10">
@@ -61,6 +62,7 @@ const PasswordInput = () => {
         name="password"
         placeholder="*******"
         className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0"
+        required
       />
       <button
         type="button"
