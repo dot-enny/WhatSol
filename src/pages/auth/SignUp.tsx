@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ContinueButton } from "../../components/ContinueButton";
 import { Spinner } from "../../components/Spinner";
 import { useSignup } from "../../hooks/useSignup";
+import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 
 export const SignUp = () => {
   const { signUp, isLoading, error } = useSignup();
@@ -33,12 +34,7 @@ const EnterPhoneNumber = () => {
   return (
     <label className="flex flex-col items-start mb-10">
       <span>Phone Number</span>
-      <input type="text" name="phone" placeholder="+234 810 665 0778"
-        pattern="^\+[\d\s]+$" 
-        title="Phone number must start with a '+' and be followed by digits and optional spaces" 
-        className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0"
-        required
-      />
+      <PhoneNumberInput />
     </label>
   )
 }
