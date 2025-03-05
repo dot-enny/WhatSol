@@ -1,49 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ContinueButton } from "../../components/ContinueButton";
-import React, { useState } from "react";
-import { api } from "../../api/axios";
-import { useDefaultStore } from "../../lib/DefaultStore";
 import { Spinner } from "../../components/Spinner";
+import { useSignin } from "../../hooks/useSignin";
 
 export const SignIn = () => {
-  const navigate = useNavigate();
-  const { setAccessToken, previousRoute } = useDefaultStore();
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.target as HTMLFormElement);
-    const { phone, password } = Object.fromEntries(formData) as { phone: string, password: string };
-    console.log({ phone, password });
-    const trimmedPhone = phone.replace(/\s+/g, '');
-    const body = { phone: trimmedPhone, password };
-    try {
-      setError('');
-      setIsLoading(true);
-      const response = await api.post('/auth/login', body);
-      setAccessToken(response.data.access_token);
-      console.log(response);
-      if (previousRoute) {
-        navigate(previousRoute);
-        // setPreviousRoute('');
-      } else {
-        navigate('/home');
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error('error signing in', error.message);
-        setError(error.message);
-      } else {
-        setError("An unexpected error occurred.");
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  
+  const { signIn, isLoading, error } = useSignin();
 
   return (
     <div className="">
@@ -51,29 +13,73 @@ export const SignIn = () => {
       <p className="text-sm mt-2 mb-10">
         Sign In with your number to get started.
       </p>
-      <form className="min-w-[258px] grid gap-y-6" onSubmit={handleSignIn}>
+      <form className="min-w-[258px] grid gap-y-6" onSubmit={signIn}>
         <label className="flex flex-col items-start">
           <span>Phone Number</span>
-          <input type="text" name="phone" placeholder="+1 (863) 293 2088" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
+          <input
+            type="text"
+            name="phone"
+            placeholder="+1 (863) 293 2088"
+            pattern="^\+\d+$"
+            title="Phone number must start with a '+' and followed by digits"
+            className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0"
+          />
         </label>
         <label className="flex flex-col items-start mb-10">
           <span>Password</span>
-          <input type="password" name="password" placeholder="*******" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
+          <PasswordInput />
         </label>
-        {
-          error &&
-          <div className="text-red-400">{error}</div>
-        }
+        {error && (
+          <div className="text-red-400 max-w-[280px] text-xs">{error}</div>
+        )}
         <ContinueButton disabled={isLoading}>
-          <span className={`${isLoading ? 'invisible' : ''}`}>Continue</span>
-          <Spinner className={`${!isLoading ? 'invisible' : 'size-2'}`} />
+          <span className={`${isLoading ? "invisible" : ""}`}>Continue</span>
+          <Spinner className={`${!isLoading ? "invisible" : "size-2"}`} />
         </ContinueButton>
         <div className="flex justify-between">
           <span>Don't have an account yet ?</span>
-          <Link to="/signup" className="text-[#0DC143]">Register</Link>
+          <Link to="/signup" className="text-[#0DC143]">
+            Register
+          </Link>
         </div>
       </form>
     </div>
-  )
+  );
 }
 
+const PasswordInput = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(prev => !prev);
+  };
+
+  return (
+    <div className="relative w-full">
+      <input
+        type={showPassword ? "text" : "password"}
+        name="password"
+        placeholder="*******"
+        className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0"
+      />
+      <button
+        type="button"
+        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-600"
+        onClick={togglePasswordVisibility}
+      >
+        {showPassword ?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+            <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+          </svg>
+          :
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+            <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+            <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+            <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+          </svg>
+        }
+      </button>
+    </div>
+  )
+}

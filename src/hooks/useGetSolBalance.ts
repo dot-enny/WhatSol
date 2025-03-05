@@ -26,7 +26,7 @@ export const useGetSolBalance = () => {
                 setSolBalance(response.data.wallet_balance);
             } catch (error) {
                 if (error instanceof Error) {
-                    console.error('error getting sol balance', error.message);
+                    console.error('error getting sol balance', error);
                     setError(error.message);
                 } else {
                     setError("An unexpected error occurred.");
