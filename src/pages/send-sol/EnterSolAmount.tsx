@@ -30,13 +30,27 @@ export const EnterSolAmount = () => {
             <div className="mb-14">
                 <label className="flex flex-col items-start my-4">
                     <span>Phone Number</span>
-                    <input type="text" name="recipient_phone" placeholder="+234 810 665 0778" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
+                    <input type="text" name="recipient_phone" 
+                        placeholder="+234 810 665 0778" 
+                        pattern="^\+[\d\s]+$" 
+                        title="Phone number must start with a '+' and be followed by digits and optional spaces" 
+                        className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" 
+                        required
+                    />
                 </label>
                 <label className="flex flex-col items-start my-4">
                     <span>Amount of SOL</span>
-                    <input type="text" name="amount" placeholder="e.g 2.5" className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" />
+                    <input
+                        required
+                        type="text"
+                        name="amount"
+                        placeholder="e.g 2.5"
+                        pattern="^\d+(\.\d+)?$"
+                        title="Please enter a valid number (e.g., 2 or 2.5)"
+                        className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0"
+                    />
                 </label>
-                <div className={classNames('text-[#0DC143] text-xs text-start text-wrap', error && 'text-red-400')}>Current Balance : { error ? error : isFetching ? 'loading...' : `${solBalance} SOL` }</div>
+                <div className={classNames('text-[#0DC143] text-xs text-start text-wrap', error && 'text-red-400')}>Current Balance : {error ? error : isFetching ? 'loading...' : `${solBalance} SOL`}</div>
             </div>
             <ContinueButton>Send SOL</ContinueButton>
         </form>
