@@ -15,7 +15,7 @@ export const SignUp = () => {
       <EnterPhoneNumber />
       {
         error &&
-        <div className="text-red-400">{error}</div>
+        <div className="text-red-400 max-w-[280px] text-xs mb-4">{error}</div>
       }
       <ContinueButton disabled={isLoading}>
         <span className={`${isLoading ? 'invisible' : ''}`}>Continue</span>

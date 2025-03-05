@@ -17,6 +17,11 @@ export const useSignin = () => {
         console.log({ phone, password });
         const trimmedPhone = phone.replace(/\s+/g, '');
         const body = { phone: trimmedPhone, password };
+        const isValidPhone = /^\+\d{1,3}\d{6,14}$/.test(trimmedPhone);
+        if (!isValidPhone) {
+            setError("Invalid phone number format. Use country code followed by phone number.");
+            return;
+        }
         try {
             setError('');
             setIsLoading(true);
