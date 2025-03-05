@@ -4,6 +4,7 @@ import { useGetSolBalance } from "../../hooks/useGetSolBalance";
 import React from "react";
 import { useDefaultStore } from "../../lib/DefaultStore";
 import { classNames } from "../../utils/helpers";
+import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 
 export const EnterSolAmount = () => {
     const navigate = useNavigate();
@@ -30,13 +31,7 @@ export const EnterSolAmount = () => {
             <div className="mb-14">
                 <label className="flex flex-col items-start my-4">
                     <span>Phone Number</span>
-                    <input type="text" name="recipient_phone" 
-                        placeholder="+234 810 665 0778" 
-                        pattern="^\+[\d\s]+$" 
-                        title="Phone number must start with a '+' and be followed by digits and optional spaces" 
-                        className="border border-[#D9D9D9] w-full p-3 rounded-[0.625rem] outline-0" 
-                        required
-                    />
+                    <PhoneNumberInput />
                 </label>
                 <label className="flex flex-col items-start my-4">
                     <span>Amount of SOL</span>
